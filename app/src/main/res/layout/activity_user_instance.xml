@@ -7,6 +7,21 @@ android:layout_height="match_parent"
 android:background="@color/colorPrimaryDarkest"
 tools:context=".UserInstance">
 
+    <Button
+        android:id="@+id/saveData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/saveDataStr"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutUserData"
+        app:layout_constraintVertical_bias="0.687" />
+
     <LinearLayout
         android:id="@+id/layoutUserData"
         android:layout_width="match_parent"
@@ -27,13 +42,15 @@ tools:context=".UserInstance">
         app:layout_constraintTop_toBottomOf="@+id/layoutUserName"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
+        <EditText
             android:id="@+id/userData"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:autofillHints=""
             android:hint="@string/userDataHint"
+            android:inputType="textMultiLine"
             android:textColor="@color/colorText"
-            android:textColorHint="@color/colorTextHint" />
+            android:textColorHint="@color/colorTextHint" tools:targetApi="o"/>
 
     </LinearLayout>
 
