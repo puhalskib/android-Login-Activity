@@ -3,4 +3,6 @@
     <string name="userHint">Enter username</string>
     <string name="passHint">Enter password</string>
     <string name="loginButton">Login</string>
+    <string name="title_activity_user_instance">userInstance</string>
+    <string name="userDataHint">Type text here</string>
 </resources>
