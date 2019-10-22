@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_user_instance.*
-import java.io.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,61 +14,42 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val users = (this.application as UserList).users
+
         loginButton.setOnClickListener {
             //create intent
             val intent = Intent(this, UserInstance::class.java)
 
             //get username and password
-            val file:String = usernameField.text.toString() + ".txt"
-            val data:String = passwordField.text.toString()
+            val inputUser:String = usernameField.text.toString()
+            val inputPass:String = passwordField.text.toString()
 
-            //read from file
-            //todo check if file exists or not!!!!
-            val filename = file
-            if (filename.toString() != null && filename.toString().trim() != "") {
-                var fileInputStream: FileInputStream? = null
-                fileInputStream = openFileInput(filename)
-                var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
-                val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
-                val stringBuilder: StringBuilder = StringBuilder()
-                var text: String? = null
-                while ({ text = bufferedReader.readLine(); text }() != null) {
-                    stringBuilder.append(text)
+            //search for username in arrayList
+            for(item in users) {
+                if(item.username == inputUser) {
+                    if(item.password == inputPass) {
+                        //create intent to userInstance activity
+                        val intent = Intent(this, UserInstance::class.java)
+
+                        //put user into intent
+                        intent.putExtra("user", item)
+
+                        //launch second activity to login
+                        startActivity(intent)
+
+                    } else {
+                        //incorrect password
+                        Toast.makeText(this, "Incorrect Password", Toast.LENGTH_LONG).show()
+                    }
                 }
-                //Displaying data
-                userData.setText(stringBuilder.toString()).toString()
-                if(stringBuilder.toString() == data) {
-                    login(file, data)
-                } else {
-                    Toast.makeText(applicationContext, "Login Failed", Toast.LENGTH_LONG).show()
-                }
-            } else {
-                Toast.makeText(applicationContext, "file name cannot be blank", Toast.LENGTH_LONG)
-                    .show()
             }
+            //send new user through UserInstance
+            val intent2 = Intent(this, UserInstance::class.java)
+            users.add(User(inputUser, inputPass))
+            intent2.putExtra("user", users.last())
+            startActivity(intent2)
+
 
         }
-    }
-    private fun login(file: String, data: String) {
-        val fileOutputStream:FileOutputStream
-        try {
-            fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
-            fileOutputStream.write(data.toByteArray())
-        } catch (e: FileNotFoundException){
-            e.printStackTrace()
-        }catch (e: NumberFormatException){
-            e.printStackTrace()
-        }catch (e: IOException){
-            e.printStackTrace()
-        }catch (e: Exception){
-            e.printStackTrace()
-        }
-        Toast.makeText(applicationContext,"data save",Toast.LENGTH_LONG).show()
-
-        //pass data to intent
-        intent.putExtra("fileNa", file)
-
-        // start your next activity with intent
-        startActivity(intent)
     }
 }
