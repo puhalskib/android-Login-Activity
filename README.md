@@ -1,7 +1,7 @@
 # android-Login-Activity
 
 Basic application that launches a second activity that returns some result
-![GitHub Logo](screenshots/Screenshot_1572238725.png)
+![GitHub Logo](screenshots/Screenshot_1.png)
 
 ## Features
 
