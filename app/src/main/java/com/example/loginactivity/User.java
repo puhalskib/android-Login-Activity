@@ -4,16 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class User implements Parcelable {
+    //private string data
     private String username;
     private String password;
     private String data;
 
+    //initialize user
     public User(String u, String p, String d) {
         username = u;
         password = p;
         data = d;
     }
-
+    //sets
     public void setData(String d) {
         this.data = d;
     }
@@ -23,7 +25,7 @@ public class User implements Parcelable {
         password = in.readString();
         data = in.readString();
     }
-
+    //parcelable functions
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
         public User createFromParcel(Parcel in) {
@@ -36,10 +38,10 @@ public class User implements Parcelable {
         }
     };
 
+    //gets
     public String getUsername() {
         return username;
     }
-
     public String getPassword() {
         return password;
     }

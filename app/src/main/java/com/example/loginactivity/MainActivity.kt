@@ -1,6 +1,5 @@
 package com.example.loginactivity
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -56,12 +55,13 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
+    //override onStartActivityForResult() return
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQ_CODE && resultCode == resultCode) {
             if (data != null) {
                 val userI = data.getParcelableExtra<User>("userR")
+                //find user in users
                 for(item in users.indices) {
                     if(users[item].username == userI.username) {
                         //rewrite to users
@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         else {
+            //error message
             Toast.makeText(this, "Error on return", Toast.LENGTH_LONG).show()
         }
     }
