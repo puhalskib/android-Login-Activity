@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">" Activité de connexion"</string>
+    <string name="loginButton">S\'identifier</string>
+    <string name="hintData">" entrez les données textuelles ici"</string>
+    <string name="newUser">" Bonjour nouvel utilisateur"</string>
+    <string name="passHint">" Entrer le mot de passe"</string>
+    <string name="saveDataStr">" enregistrer"</string>
+    <string name="userHint">Saisissez votre nom d\'utilisateur</string>
+</resources>

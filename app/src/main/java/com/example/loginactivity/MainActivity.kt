@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    //TODO show and hide password
+
     //override onStartActivityForResult() return
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
