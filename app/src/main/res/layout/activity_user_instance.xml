@@ -47,10 +47,10 @@ tools:context=".UserInstance">
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autofillHints=""
-            android:hint="@string/userDataHint"
             android:inputType="textMultiLine"
             android:textColor="@color/colorText"
-            android:textColorHint="@color/colorTextHint" tools:targetApi="o"/>
+            android:textColorHint="@color/colorTextHint"
+            tools:targetApi="o" />
 
     </LinearLayout>
 

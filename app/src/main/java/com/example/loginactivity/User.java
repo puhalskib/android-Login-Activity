@@ -19,6 +19,10 @@ public class User implements Parcelable {
         data = "NEW USER";
     }
 
+    public void setData(String d) {
+        this.data = d;
+    }
+
     protected User(Parcel in) {
         username = in.readString();
         password = in.readString();
