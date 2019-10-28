@@ -8,15 +8,10 @@ public class User implements Parcelable {
     private String password;
     private String data;
 
-    public User(String line1, String line2, String line3) {
-        username = line1;
-        password = line2;
-        data = line3;
-    }
-    public User(String line1, String line2) {
-        username = line1;
-        password = line2;
-        data = "NEW USER";
+    public User(String u, String p, String d) {
+        username = u;
+        password = p;
+        data = d;
     }
 
     public void setData(String d) {

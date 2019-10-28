@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">loginActivity</string>
+    <string name="app_name">login Activity</string>
     <string name="userHint">Enter username</string>
     <string name="passHint">Enter password</string>
     <string name="loginButton">Login</string>
     <string name="title_activity_user_instance">userInstance</string>
     <string name="saveDataStr">SAVE</string>
+    <string name="hintData">enter text data here</string>
+    <string name="newUser">Hello New User</string>
 </resources>
