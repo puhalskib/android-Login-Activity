@@ -1,6 +1,7 @@
 # android-Login-Activity
 
 Basic application that launches a second activity that returns some result
+![alt text](https://https://github.com/puhalskib/android-Login-Activity/blob/master/screenshots/Screenshot_1572238725.png "Login Menu")
 
 ## Features
 
