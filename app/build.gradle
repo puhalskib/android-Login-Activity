@@ -22,6 +22,20 @@ android {
         }
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+    flavorDimensions"default"
+    productFlavors {
+        demo {
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+            buildConfigField("String", "BASE_URL", "\"http://www.demo.com\"")
+        }
+        full {
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+            buildConfigField("String", "BASE_URL", "\"http://www.full.com\"")
+        }
+    }
+
 }
 
 dependencies {

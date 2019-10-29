@@ -18,20 +18,39 @@ class UserInstance : AppCompatActivity() {
 
         //print username and user data to text fields
         userNameText.text = user.username
-        userData.setText(user.data, TextView.BufferType.EDITABLE)
 
-        //save button listener sends result back to main activity
-        saveData.setOnClickListener{
-            user.data = userData.text.toString()
+        callService(BuildConfig.BASE_URL, user)
 
-            //create intent
-            val rIntent = Intent()
 
-            //put user into intent
-            rIntent.putExtra("userR", user)
-            setResult(Activity.RESULT_OK,rIntent)
-            finish()
+    }
+    private fun callService(url: String, u: User) {
+        val urlFull = "http://www.full.com"
+        if(url == urlFull) {
+            userData.setText(u.data, TextView.BufferType.EDITABLE)
+
+            //save button listener sends result back to main activity
+            saveData.setOnClickListener {
+                u.data = userData.text.toString()
+
+                //create intent
+                val rIntent = Intent()
+
+                //put user into intent
+                rIntent.putExtra("userR", u)
+                setResult(Activity.RESULT_OK, rIntent)
+                finish()
+            }
+        } else {
+            saveData.text = getString(R.string.demoReturnBtn)
+            saveData.setOnClickListener {
+                //create intent
+                val rIntent = Intent()
+
+                //put user into intent
+                rIntent.putExtra("userR", u)
+                setResult(Activity.RESULT_OK, rIntent)
+                finish()
+            }
         }
-
     }
 }

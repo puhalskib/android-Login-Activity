@@ -7,4 +7,6 @@
     <string name="passHint">" Entrer le mot de passe"</string>
     <string name="saveDataStr">" enregistrer"</string>
     <string name="userHint">Saisissez votre nom d\'utilisateur</string>
+    <string name="demoTextStr">Aucune sauvegarde de données dans la version démo</string>
+    <string name="demoReturnBtn">revenir</string>
 </resources>

@@ -7,4 +7,6 @@
     <string name="saveDataStr">SAVE</string>
     <string name="hintData">enter text data here</string>
     <string name="newUser">Hello New User</string>
+    <string name="demoTextStr">No data saving in demo version</string>
+    <string name="demoReturnBtn">return</string>
 </resources>
