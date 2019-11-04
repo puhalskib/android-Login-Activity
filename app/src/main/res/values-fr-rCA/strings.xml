@@ -11,4 +11,6 @@
     <string name="demoReturnBtn">revenir</string>
     <string name="Hide">cacher</string>
     <string name="Show">" spectacle"</string>
+    <string name="incorrectPass">Mot de passe incorrect</string>
+    <string name="error">pas de réécriture des données</string>
 </resources>

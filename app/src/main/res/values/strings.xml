@@ -11,4 +11,6 @@
     <string name="demoReturnBtn">return</string>
     <string name="Hide">Hide</string>
     <string name="Show">Show</string>
+    <string name="incorrectPass">Incorrect Password</string>
+    <string name="error">No data rewrite</string>
 </resources>

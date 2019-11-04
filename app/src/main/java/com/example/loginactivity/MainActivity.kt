@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     //list of all users in application
-    private val users = ArrayList<User>()
+    private val users = mutableMapOf<String, User>()
+
     private val REQ_CODE = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,63 +32,63 @@ class MainActivity : AppCompatActivity() {
         //set login button on click event
         loginButton.setOnClickListener {
             //get username and password
-            val inputUser:String = usernameField.text.toString()
-            val inputPass:String = passwordField.text.toString()
+            val inputUser: String = usernameField.text.toString()
+            val inputPass: String = passwordField.text.toString()
 
-            var loggedIn = false
-            //search for username in arrayList
-            for(item in users) {
-                if(item.username == inputUser) {
-                    loggedIn = true
-                    if(item.password == inputPass) {
-                        //create intent to userInstance activity
-                        val intent = Intent(this, UserInstance::class.java)
+            //if inputed user in mutablemap
+            if (inputUser in users) {
+                val chosenUser: User = users[inputUser]!!
+                if (chosenUser.password == inputPass) {
+                    //create intent to userInstance activity
+                    val intent = Intent(this, UserInstance::class.java)
 
-                        //put user into intent
-                        intent.putExtra("userS", item)
+                    //put user into intent
+                    intent.putExtra("userS", chosenUser)
 
-                        //launch second activity to login
-                        startActivityForResult(intent, REQ_CODE)
-
-                    } else {
-                        //incorrect password
-                        Toast.makeText(this, "Incorrect Password", Toast.LENGTH_LONG).show()
-                    }
+                    //launch second activity to login
+                    startActivityForResult(intent, REQ_CODE)
+                } else {
+                    //incorrect password
+                    Toast.makeText(this, getString(R.string.incorrectPass), Toast.LENGTH_LONG).show()
                 }
-            }
-            //create a new user
-            if(loggedIn == false) {
+            } else {
+                //create a new user
                 //send new user through UserInstance
                 val intent2 = Intent(this, UserInstance::class.java)
-                users.add(User(inputUser, inputPass, getString(R.string.newUser)))
-                intent2.putExtra("userS", users.last())
+
+                //add user to mutable map
+                users.put(inputUser, User(inputUser, inputPass, getString(R.string.newUser)))
+
+                //add user to intent
+                intent2.putExtra("userS", users[inputUser])
+
+                //start userInstance activity
                 startActivityForResult(intent2, REQ_CODE)
             }
-
         }
 
     }
-    //TODO show and hide password
 
     //override onStartActivityForResult() return
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        //make sure requestCode is ok
         if (requestCode == REQ_CODE && resultCode == resultCode) {
             if (data != null) {
-                val userI = data.getParcelableExtra<User>("userR")
-                //find user in users
-                for(item in users.indices) {
-                    if(users[item].username == userI.username) {
-                        //rewrite to users
-                        users[item].data = userI.data
+                if(data.getParcelableExtra<User>("userR") != null) {
+                    val userI = data.getParcelableExtra<User>("userR")!!
+
+                    //find user in users
+                    if (userI.username in users) {
+                        //rewrite to mutable map user.data
+                        users[userI.username]!!.data = userI.data
                     }
                 }
+            } else {
+                Toast.makeText(this, getString(R.string.error), Toast.LENGTH_LONG).show()
             }
-
-        }
-        else {
-            //error message
-            Toast.makeText(this, "Error on return", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, getString(R.string.error), Toast.LENGTH_LONG).show()
         }
     }
 }
