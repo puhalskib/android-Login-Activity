@@ -9,4 +9,6 @@
     <string name="newUser">Hello New User</string>
     <string name="demoTextStr">No data saving in demo version</string>
     <string name="demoReturnBtn">return</string>
+    <string name="Hide">Hide</string>
+    <string name="Show">Show</string>
 </resources>

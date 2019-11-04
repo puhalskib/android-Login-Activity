@@ -3,6 +3,8 @@ package com.example.loginactivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -17,6 +19,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //hide or show password button toggle
+        hidePassbtn.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                passwordField.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            } else {
+                passwordField.transformationMethod = PasswordTransformationMethod.getInstance()
+            }
+        }
+
+        //set login button on click event
         loginButton.setOnClickListener {
             //get username and password
             val inputUser:String = usernameField.text.toString()

@@ -9,4 +9,6 @@
     <string name="userHint">Saisissez votre nom d\'utilisateur</string>
     <string name="demoTextStr">Aucune sauvegarde de données dans la version démo</string>
     <string name="demoReturnBtn">revenir</string>
+    <string name="Hide">cacher</string>
+    <string name="Show">" spectacle"</string>
 </resources>

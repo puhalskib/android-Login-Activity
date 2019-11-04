@@ -35,24 +35,46 @@
             android:textColorHint="@color/colorTextHint"
             tools:targetApi="o" />
 
-        <EditText
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
                 android:id="@+id/passwordField"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/passHint"
                 android:inputType="textPassword"
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorTextHint"
+                app:layout_constraintEnd_toStartOf="@+id/hidePassbtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:targetApi="o" />
+
+            <ToggleButton
+                android:id="@+id/hidePassbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorText"
+                android:textColorLink="@color/colorAccent"
+                android:textOff="@string/Show"
+                android:textOn="@string/Hide"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
             android:text="@string/loginButton"
             android:textColor="@color/colorText"
