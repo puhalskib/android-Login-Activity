@@ -11,6 +11,8 @@ Basic application that launches a second activity that returns some result
 - create user
 - save data to users
 
+<img width="270" src="./screenshots/Screenshot_1572977050.png" />
+
 ## Future
 
 - store users in internal storage with json data
